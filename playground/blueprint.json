@@ -1,0 +1,68 @@
+{
+    "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+    "meta": {
+        "title": "wpvdb Playground demo",
+        "author": "rbcorrales",
+        "description": "WordPress Vector Database demo with sample posts, precomputed vectors, and preset query buttons."
+    },
+    "preferredVersions": {
+        "php": "8.3",
+        "wp": "latest"
+    },
+    "phpExtensionBundles": [
+        "kitchen-sink"
+    ],
+    "features": {
+        "networking": true
+    },
+    "landingPage": "/wp-admin/admin.php?page=wpvdb-dashboard",
+    "steps": [
+        {
+            "step": "defineWpConfigConsts",
+            "consts": {
+                "SQLITE_JOURNAL_MODE": "MEMORY",
+                "WPVDB_PLAYGROUND_RUNTIME": true,
+                "WPVDB_DEMO_MODE": true
+            }
+        },
+        {
+            "step": "login",
+            "username": "admin",
+            "password": "password"
+        },
+        {
+            "step": "installPlugin",
+            "pluginData": {
+                "resource": "url",
+                "url": "https://github.com/rbcorrales/wpvdb/archive/refs/heads/feat/sqlite-and-playground-runtime.zip"
+            },
+            "options": {
+                "targetFolderName": "wpvdb",
+                "activate": false
+            }
+        },
+        {
+            "step": "installPlugin",
+            "pluginData": {
+                "resource": "url",
+				"url": "https://github.com/rbcorrales/wpvdb-playground-demo/archive/refs/heads/main.zip"
+            },
+            "options": {
+                "targetFolderName": "wpvdb-playground-demo",
+                "activate": false
+            }
+        },
+        {
+            "step": "activatePlugin",
+            "pluginPath": "wpvdb/wpvdb.php"
+        },
+        {
+            "step": "activatePlugin",
+            "pluginPath": "wpvdb-playground-demo/wpvdb-playground-demo.php"
+        },
+        {
+            "step": "runPHP",
+            "code": "<?php require_once '/wordpress/wp-load.php'; require_once WP_PLUGIN_DIR . '/wpvdb-playground-demo/playground/preload-demo.php';"
+        }
+    ]
+}
