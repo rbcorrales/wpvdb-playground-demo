@@ -1,12 +1,12 @@
-# WPVDB Playground demo
+# WPVDB Playground Demo
 
 [![WordPress](https://img.shields.io/badge/WordPress-6.5%2B-3858e9?logo=wordpress&logoColor=white)](#requirements)
 [![PHP](https://img.shields.io/badge/PHP-7.4%2B-777bb4?logo=php&logoColor=white)](#requirements)
 [![License](https://img.shields.io/badge/License-GPLv2%2B-blue.svg)](LICENSE)
 
-Demo packaging for running wpvdb inside WordPress Playground.
+Demo packaging for running WPVDB inside WordPress Playground.
 
-This plugin depends on wpvdb core runtime support. Core owns SQLite fallback behavior, Playground runtime guards, and the public hooks. This demo plugin owns sample content, precomputed vectors, preset query UI, and the public Blueprint.
+This plugin depends on WPVDB core runtime support. Core owns SQLite fallback behavior, Playground runtime guards, and the public hooks. This demo plugin owns sample content, precomputed vectors, preset query UI, and the public Blueprint.
 
 ## Requirements
 
@@ -31,6 +31,20 @@ Vanilla JavaScript for preset query buttons and results rendering.
 `playground/`
 Blueprint, preloader, and generated demo vectors.
 
+## Development
+
+Install dependencies:
+
+```bash
+composer install
+```
+
+Run the local checks:
+
+```bash
+composer lint
+```
+
 ## Local intent
 
-The plugin has no effect unless both `WPVDB_PLAYGROUND_RUNTIME` and `WPVDB_DEMO_MODE` are true. The public Playground Blueprint sets both constants, then installs wpvdb first and this demo plugin second.
+The plugin has no effect unless both `WPVDB_PLAYGROUND_RUNTIME` and `WPVDB_DEMO_MODE` are true. The public Playground Blueprint sets both constants, then installs WPVDB first and this demo plugin second.
