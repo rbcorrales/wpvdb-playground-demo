@@ -43,6 +43,9 @@ class Demo_Plugin {
 		add_filter( 'wpvdb_query_accept_vector_field', '__return_true' );
 		add_filter( 'wpvdb_render_editor_embedding_ui', '__return_false' );
 		add_filter( 'wpvdb_render_dashboard_search_widget', '__return_false' );
+		add_filter( 'wpvdb_render_status_tools_ui', '__return_false' );
+		add_filter( 'wpvdb_enqueue_admin_script', '__return_false' );
+		add_filter( 'wpvdb_log_to_error_log', '__return_false' );
 
 		add_action( 'wpvdb_dashboard_widgets', [ self::$admin, 'render_preset_widget' ], 10 );
 		add_action( 'admin_enqueue_scripts', [ self::$admin, 'enqueue_assets' ] );
