@@ -46,6 +46,7 @@ class Demo_Plugin {
 		add_filter( 'wpvdb_render_status_tools_ui', '__return_false' );
 		add_filter( 'wpvdb_enqueue_admin_script', '__return_false' );
 		add_filter( 'wpvdb_log_to_error_log', '__return_false' );
+		add_filter( 'wpvdb_search_related_model', [ __CLASS__, 'filter_related_model' ], 10, 3 );
 
 		add_action( 'wpvdb_dashboard_widgets', [ self::$admin, 'render_preset_widget' ], 10 );
 		add_action( 'admin_enqueue_scripts', [ self::$admin, 'enqueue_assets' ] );
@@ -59,6 +60,34 @@ class Demo_Plugin {
 	public static function is_demo_mode() {
 		return defined( 'WPVDB_PLAYGROUND_RUNTIME' ) && WPVDB_PLAYGROUND_RUNTIME
 			&& defined( 'WPVDB_DEMO_MODE' ) && WPVDB_DEMO_MODE;
+	}
+
+	/**
+	 * Route related article lookups to the preloaded demo model.
+	 *
+	 * @param string $model   Requested related model.
+	 * @param int    $post_id Source post ID.
+	 * @param array  $args    Raw related-post args.
+	 * @return string
+	 */
+	public static function filter_related_model( $model, $post_id = 0, $args = [] ) {
+		unset( $post_id, $args );
+
+		if ( ! self::is_demo_mode() ) {
+			return $model;
+		}
+
+		return self::demo_model();
+	}
+
+	/**
+	 * Demo embedding model name.
+	 *
+	 * @return string
+	 */
+	private static function demo_model() {
+		$dim = defined( 'WPVDB_DEFAULT_EMBED_DIM' ) ? (int) WPVDB_DEFAULT_EMBED_DIM : 768;
+		return 'wpvdb-demo-' . $dim;
 	}
 
 	/**
