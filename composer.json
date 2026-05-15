@@ -1,0 +1,42 @@
+{
+	"name": "rbcorrales/wpvdb-playground-demo",
+	"description": "Demo packaging for running WPVDB inside WordPress Playground.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"homepage": "https://github.com/rbcorrales/wpvdb-playground-demo",
+	"authors": [
+		{
+			"name": "Automattic",
+			"homepage": "https://automattic.com/"
+		},
+		{
+			"name": "Ramon Corrales",
+			"homepage": "https://github.com/rbcorrales"
+		}
+	],
+	"require": {
+		"php": ">=7.4"
+	},
+	"require-dev": {
+		"automattic/vipwpcs": "^3.0",
+		"dealerdirect/phpcodesniffer-composer-installer": "*",
+		"phpcompatibility/phpcompatibility-wp": "*",
+		"wp-coding-standards/wpcs": "^3.0"
+	},
+	"scripts": {
+		"lint": "./vendor/bin/phpcs",
+		"fix": "./vendor/bin/phpcbf"
+	},
+	"support": {
+		"issues": "https://github.com/rbcorrales/wpvdb-playground-demo/issues",
+		"source": "https://github.com/rbcorrales/wpvdb-playground-demo"
+	},
+	"config": {
+		"platform": {
+			"php": "7.4.0"
+		},
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	}
+}
