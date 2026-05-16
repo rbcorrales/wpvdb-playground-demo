@@ -6,7 +6,7 @@
 
 Demo packaging for running WPVDB inside WordPress Playground.
 
-This plugin depends on WPVDB core runtime support. Core owns SQLite fallback behavior, Playground runtime guards, and the public hooks. This demo plugin owns sample content, precomputed vectors, preset query UI, and the public Blueprint.
+This plugin depends on WPVDB core runtime support. Core owns SQLite fallback behavior, Playground runtime guards, and the public hooks. This demo plugin includes sample content, precomputed vectors, a preset query UI, and public Blueprints.
 
 ## Requirements
 
@@ -16,6 +16,15 @@ This plugin depends on WPVDB core runtime support. Core owns SQLite fallback beh
 | PHP | 7.4 or newer |
 | [`wpvdb`](https://github.com/rbcorrales/wpvdb) | Runtime support branch with SQLite and Playground hooks |
 | WordPress Playground | Public Blueprint or compatible custom host |
+
+## Blueprints
+
+| Blueprint | Installs | Purpose |
+|---|---|---|
+| `playground/blueprint.json` | [`wpvdb`](https://github.com/rbcorrales/wpvdb), [`wpvdb-playground-demo`](https://github.com/rbcorrales/wpvdb-playground-demo) | Main public demo. Loads sample content, precomputed vectors, and preset query buttons on the WPVDB dashboard. |
+| `playground/blueprint-suite.json` | [`wpvdb`](https://github.com/rbcorrales/wpvdb), [`wpvdb-playground-demo`](https://github.com/rbcorrales/wpvdb-playground-demo), [`wpvdb-search`](https://github.com/rbcorrales/wpvdb-search), [`wpvdb-smart-search`](https://github.com/rbcorrales/wpvdb-smart-search), [`wpvdb-blocks`](https://github.com/rbcorrales/wpvdb-blocks) | Full plugin suite demo. Loads the companion search, smart search, and blocks plugins in the same Playground site so their admin and frontend surfaces can be inspected alongside the WPVDB demo. |
+
+The suite Blueprint verifies that the companion plugins load together. The WPVDB dashboard presets and Related Articles work without a key, while arbitrary typed Smart Search still depends on future offline search support for SQLite in Playground.
 
 ## Contents
 
@@ -47,4 +56,4 @@ composer lint
 
 ## Local intent
 
-The plugin has no effect unless both `WPVDB_PLAYGROUND_RUNTIME` and `WPVDB_DEMO_MODE` are true. The public Playground Blueprint sets both constants, then installs WPVDB first and this demo plugin second.
+The plugin is inert unless both `WPVDB_PLAYGROUND_RUNTIME` and `WPVDB_DEMO_MODE` are true. The Blueprints in this repo set those constants before activating plugins, install WPVDB before this demo plugin, and then preload the sample content and vectors.

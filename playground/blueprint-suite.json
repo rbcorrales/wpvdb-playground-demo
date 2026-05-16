@@ -1,0 +1,117 @@
+{
+    "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+    "meta": {
+        "title": "wpvdb suite Playground demo",
+        "author": "rbcorrales",
+        "description": "WordPress Vector Database demo with the companion search, smart search, and blocks plugins installed from releases."
+    },
+    "preferredVersions": {
+        "php": "8.3",
+        "wp": "latest"
+    },
+    "phpExtensionBundles": [
+        "kitchen-sink"
+    ],
+    "features": {
+        "networking": true
+    },
+    "landingPage": "/wp-admin/admin.php?page=wpvdb-dashboard",
+    "steps": [
+        {
+            "step": "defineWpConfigConsts",
+            "consts": {
+                "SQLITE_JOURNAL_MODE": "MEMORY",
+                "WPVDB_PLAYGROUND_RUNTIME": true,
+                "WPVDB_DEMO_MODE": true
+            }
+        },
+        {
+            "step": "login",
+            "username": "admin",
+            "password": "password"
+        },
+        {
+            "step": "installPlugin",
+            "pluginData": {
+                "resource": "url",
+                "url": "https://github.com/rbcorrales/wpvdb/archive/refs/heads/main.zip"
+            },
+            "options": {
+                "targetFolderName": "wpvdb",
+                "activate": false
+            }
+        },
+        {
+            "step": "installPlugin",
+            "pluginData": {
+                "resource": "url",
+                "url": "https://github.com/rbcorrales/wpvdb-search/releases/download/v0.6.0/wpvdb-search.zip"
+            },
+            "options": {
+                "targetFolderName": "wpvdb-search",
+                "activate": false
+            }
+        },
+        {
+            "step": "installPlugin",
+            "pluginData": {
+                "resource": "url",
+                "url": "https://github.com/rbcorrales/wpvdb-smart-search/releases/download/v0.1.1/wpvdb-smart-search.zip"
+            },
+            "options": {
+                "targetFolderName": "wpvdb-smart-search",
+                "activate": false
+            }
+        },
+        {
+            "step": "installPlugin",
+            "pluginData": {
+                "resource": "url",
+                "url": "https://github.com/rbcorrales/wpvdb-blocks/releases/download/v0.1.0/wpvdb-blocks.zip"
+            },
+            "options": {
+                "targetFolderName": "wpvdb-blocks",
+                "activate": false
+            }
+        },
+        {
+            "step": "installPlugin",
+            "pluginData": {
+                "resource": "url",
+                "url": "https://github.com/rbcorrales/wpvdb-playground-demo/archive/refs/heads/main.zip"
+            },
+            "options": {
+                "targetFolderName": "wpvdb-playground-demo",
+                "activate": false
+            }
+        },
+        {
+            "step": "activatePlugin",
+            "pluginPath": "wpvdb/wpvdb.php"
+        },
+        {
+            "step": "runPHP",
+            "code": "<?php require_once '/wordpress/wp-load.php'; update_option('wpvdb_search_fulltext_installed', '1', false);"
+        },
+        {
+            "step": "activatePlugin",
+            "pluginPath": "wpvdb-search/wpvdb-search.php"
+        },
+        {
+            "step": "activatePlugin",
+            "pluginPath": "wpvdb-smart-search/wpvdb-smart-search.php"
+        },
+        {
+            "step": "activatePlugin",
+            "pluginPath": "wpvdb-blocks/wpvdb-blocks.php"
+        },
+        {
+            "step": "activatePlugin",
+            "pluginPath": "wpvdb-playground-demo/wpvdb-playground-demo.php"
+        },
+        {
+            "step": "runPHP",
+            "code": "<?php require_once '/wordpress/wp-load.php'; require_once WP_PLUGIN_DIR . '/wpvdb-playground-demo/playground/preload-demo.php';"
+        }
+    ]
+}
