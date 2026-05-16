@@ -26,6 +26,11 @@ This plugin depends on WPVDB core runtime support. Core owns SQLite fallback beh
 
 The suite Blueprint verifies that the companion plugins load together. The WPVDB dashboard presets and Related Articles work without a key, while arbitrary typed Smart Search still depends on future offline search support for SQLite in Playground.
 
+Launch links:
+
+- [Open the main demo in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2Frbcorrales%2Fwpvdb-playground-demo%2Fmain%2Fplayground%2Fblueprint.json)
+- [Open the suite demo in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2Frbcorrales%2Fwpvdb-playground-demo%2Fmain%2Fplayground%2Fblueprint-suite.json)
+
 ## Contents
 
 `wpvdb-playground-demo.php`
