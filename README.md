@@ -14,7 +14,7 @@ This plugin depends on WPVDB core runtime support. Core owns SQLite fallback beh
 |---|---|
 | WordPress | 6.5 or newer |
 | PHP | 7.4 or newer |
-| [`wpvdb`](https://github.com/rbcorrales/wpvdb) | Runtime support branch with SQLite and Playground hooks |
+| [`wpvdb`](https://github.com/Automattic/wpvdb) | Runtime support branch with SQLite and Playground hooks |
 | WordPress Playground | Public Blueprint or compatible custom host |
 
 ## Blueprints
