@@ -21,8 +21,8 @@ This plugin depends on WPVDB core runtime support. Core owns SQLite fallback beh
 
 | Blueprint | Installs | Purpose |
 |---|---|---|
-| `playground/blueprint.json` | [`wpvdb`](https://github.com/rbcorrales/wpvdb), [`wpvdb-playground-demo`](https://github.com/rbcorrales/wpvdb-playground-demo) | Main public demo. Loads sample content, precomputed vectors, and preset query buttons on the WPVDB dashboard. |
-| `playground/blueprint-suite.json` | [`wpvdb`](https://github.com/rbcorrales/wpvdb), [`wpvdb-playground-demo`](https://github.com/rbcorrales/wpvdb-playground-demo), [`wpvdb-search`](https://github.com/rbcorrales/wpvdb-search), [`wpvdb-smart-search`](https://github.com/rbcorrales/wpvdb-smart-search), [`wpvdb-blocks`](https://github.com/rbcorrales/wpvdb-blocks) | Full plugin suite demo. Loads the companion search, smart search, and blocks plugins in the same Playground site so their admin and frontend surfaces can be inspected alongside the WPVDB demo. |
+| `playground/blueprint.json` | [`wpvdb`](https://github.com/Automattic/wpvdb), [`wpvdb-playground-demo`](https://github.com/rbcorrales/wpvdb-playground-demo) | Main public demo. Loads sample content, precomputed vectors, and preset query buttons on the WPVDB dashboard. |
+| `playground/blueprint-suite.json` | [`wpvdb`](https://github.com/Automattic/wpvdb), [`wpvdb-playground-demo`](https://github.com/rbcorrales/wpvdb-playground-demo), [`wpvdb-search`](https://github.com/Automattic/wpvdb-search), [`wpvdb-smart-search`](https://github.com/Automattic/wpvdb-smart-search), [`wpvdb-blocks`](https://github.com/Automattic/wpvdb-blocks) | Full plugin suite demo. Loads the companion search, smart search, and blocks plugins in the same Playground site so their admin and frontend surfaces can be inspected alongside the WPVDB demo. |
 
 The suite Blueprint verifies that the companion plugins load together. The WPVDB dashboard presets and Related Articles work without a key, while arbitrary typed Smart Search still depends on future offline search support for SQLite in Playground.
 
